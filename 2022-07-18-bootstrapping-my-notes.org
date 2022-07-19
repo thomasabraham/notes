@@ -1,0 +1,50 @@
+#+title: My Notes
+#+subtitle: Bootstrapping My Notes
+#+description: Story of how I ended up with my notes in org-mode.
+#+date: <2022-07-18 Mon 20:00>
+#+author: Thomas
+#+language: en
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+keywords: org-mode, emacs, vim, notes
+#+html_link_home:   ./
+#+html_link_up:
+
+It all started when I discovered [[https://orgmode.org/][org-mode]] a few years back. Before that I was a
+happy vim user, using vim form all sort of complex text processing. I even used
+a vim plugin in my Java IDE. But I never used vim, or text files for that
+matter, to take notes or manage my to-do list. Then one fine day, I watched with
+awe as one of my friends used org-mode to manage pretty much every aspect about
+his life, from accounting to grocery shopping. And just like that I decided to
+abandon my then decade old allegiance to vim and join the Emacs club.
+
+While trying to switch to Emacs, I realized that it takes a lot of effort to
+unlearn the VI key bindings, and started using the [[https://github.com/emacs-evil/evil][Evil mode]]. After trying the
+out-of-the-box emacs experience and a few other flavours, and fast forwarding a
+couple of years, I finally settled on the [[https://github.com/doomemacs/doomemacs][Doom Emacs]]. And by now I'm using
+org-mode for managing all sort of things. Unlike the vim days, now there are
+many rarely used, but really nice features, that I keep looking up, using once
+and then forgetting how to use again. So instead of keep searching them every
+time, and experiencing the "Déjà vu" while clicking on the same three poorly
+written articles, before finally finding the right one, I decided to write my
+own notes.
+
+Then one day, it occurred to me that despite having my own notes, I still search
+for the same things in the internet. This is mainly because I don't remember if
+I have something in my notes or not. So I decided that, in future, any notes
+that I write should be good enough to publish, so that I can actually publish
+them and let the search engine lead me back to my own notes. Then comes the
+question of how to publish them. Popular blogging platforms are very easy to
+start with, and gives me good reach that I could never get on my own. But my
+target radiance is primarily just future me. And even if I spent some time for
+the initial set-up, adding new notes to the collection should be frictionless.
+Meaning, it should not take me away from whatever that I'm doing. Creating a new
+post in any popular blogging platform is a mouse heavy operation that forces me
+to switch context. Creating github pages on the other hand is something I can do
+from any text editor, and publishing is just a push away.
+
+The decisions are made, project structure created, and now writing this
+article/note/blog/whatever as a test post for the new system. Let's see how many
+actual notes do I end up publishing.
