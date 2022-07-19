@@ -1,16 +1,10 @@
-#+title: My Notes
 #+subtitle: Bootstrapping My Notes
 #+description: Story of how I ended up with my notes in org-mode.
-#+date: <2022-07-18 Mon 20:00>
-#+author: Thomas
-#+language: en
-#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
-#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
-#+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
-#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+date: 2022-07-18
 #+keywords: org-mode, emacs, vim, notes
-#+html_link_home:   ./
+#+html_link_home: ./
 #+html_link_up:
+#+SETUPFILE: org-templates/level-0.org
 
 It all started when I discovered [[https://orgmode.org/][org-mode]] a few years back. Before that I was a
 happy vim user, using vim form all sort of complex text processing. I even used

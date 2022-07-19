@@ -1,0 +1,8 @@
+#+title: My Notes
+#+author: Thomas
+#+language: en
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:nil title:t toc:t todo:t |:t
+#+html_head: <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
