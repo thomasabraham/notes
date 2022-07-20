@@ -1,10 +1,10 @@
-#+title: Index of my notes
+#+title: My Notes
 #+description: Index of my notes
-#+date: 2022-07-18
 #+html_link_home:
 #+html_link_up:
 #+SETUPFILE: org-templates/level-0.org
 
 This is a collection of my notes
 
-[2022-07-18 Mon] [[file:2022-07-18-bootstrapping-my-notes.org][Bootstrapping my notes]]
++ 2022-07-20 [[file:2022-07-20-domain-name-system.org][DNS - Domain Name System]]
++ 2022-07-18 [[file:2022-07-18-bootstrapping-my-notes.org][Bootstrapping my notes]]

@@ -1,0 +1,40 @@
+#+title: DNS - Domain Name System
+#+subtitle: How to find the IP address of a website; or any domain name.
+#+description: This is a post about why we need DNS, and how it works.
+#+date: 2022-07-20
+#+keywords: DNS, IP
+#+html_link_home: ./
+#+SETUPFILE: org-templates/level-0.org
+
+* Why do we need DNS?
+Using the internet, computers from various parts of the world can communicate
+with each other. This process can be compared to how people used to send letters
+to each other through post offices. Computers send IP packets to each other,
+through routers, ISPs and various types of cables; they just do it very fast.
+And Unlike the physical address on the envelopes, computers uses IP addresses to
+send the IP packets to the right computer. And every computer connected to the
+Internet got one; except when you share an [[https://en.wikipedia.org/wiki/IP_address#IPv4_addresses][IPV4]] address with others, but I'll
+ignore it for now.
+
+Whether it is an IPV4 address (example - ~22.23.38.57~) or the more modern IPV6
+address (example - ~0:0:0:0:0:ffff:1617:2639~), they are both designed with
+computers in mind. How can we humans tell the computers, which computer we want
+them to connect to? I'm sure there are still many corporate offices where
+different servers are identified by their IPV4 addresses. But even if we can
+somehow remember the IP address, they can change over a period of time for a
+variety of reasons.
+
+The Domain Name System, or DNS for short, gives us easy to remember names like
+[[http://notes.thomsbox.com][notes.thomsbox.com]] that can be mapped to an IP address. We use this mostly when
+entering addresses like
+[[https://notes.thomsbox.com/2022-07-20-domain-name-system.html]]. In this example,
+The ~https~ is the protocol, ~notes.thomsbox.com~ is the host, and
+~2022-07-20-domain-name-system.html~ is the path. In this, only the host part is
+used to identify the computer to which we want to communicate; the protocol says
+we want to use the HTTP protocol for communciation and the path part says that
+we want to ~GET~ that particular page. When we type (or copy paste) this example
+to the address bar or a browser, first it has to convert the host part,
+~notes.thomsbox.com~ in our case, to an IP address. How it does that using DNS
+is covered in the next part.
+
+* TODO How DNS translates a domain name to an IP address.
