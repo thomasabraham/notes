@@ -1,4 +1,5 @@
-#+subtitle: Bootstrapping My Notes
+#+title: Bootstrapping My Notes
+#+subtitle: Story of how I ended up with my notes in org-mode.
 #+description: Story of how I ended up with my notes in org-mode.
 #+date: 2022-07-18
 #+keywords: org-mode, emacs, vim, notes

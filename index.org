@@ -1,4 +1,4 @@
-#+subtitle: Index
+#+title: Index of my notes
 #+description: Index of my notes
 #+date: 2022-07-18
 #+html_link_home:
