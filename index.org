@@ -1,7 +1,7 @@
 #+title: My Notes
 #+description: Index of my notes
-#+html_link_home:
 #+html_link_up:
+#+html_link_home: ./
 #+SETUPFILE: org-templates/level-0.org
 
 This is a collection of my notes

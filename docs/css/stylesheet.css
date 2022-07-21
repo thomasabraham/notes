@@ -7,10 +7,20 @@ body{
     text-decoration-color: white;
 }
 #org-div-home-and-up{
-    padding: 1em;
+    font-size: 100%;
+    max-width: 60em;
+    margin: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
     background-color: black;
 }
 .content{
     padding: 2em;
     background-color:silver;
+}
+#postamble{
+    max-width: 60em;
+    margin: auto;
 }

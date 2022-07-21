@@ -4,6 +4,6 @@
 #+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
 #+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:nil title:t toc:t todo:t |:t
-#+html_head: <meta charset="UTF-8">
+#+html_doctype: html5
 #+html_head: <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 #+html_head: <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48x48.png" />
