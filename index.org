@@ -1,6 +1,6 @@
 #+title: My Notes
 #+description: Index of my notes
-#+html_link_up:
+#+html_link_up: ./
 #+html_link_home: ./
 #+SETUPFILE: org-templates/level-0.org
 

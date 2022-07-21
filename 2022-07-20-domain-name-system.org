@@ -4,6 +4,7 @@
 #+date: 2022-07-20
 #+keywords: DNS, IP
 #+html_link_home: ./
+#+html_link_up: ./
 #+SETUPFILE: org-templates/level-0.org
 
 * Why do we need DNS?
@@ -37,4 +38,11 @@ to the address bar or a browser, first it has to convert the host part,
 ~notes.thomsbox.com~ in our case, to an IP address. How it does that using DNS
 is covered in the next part.
 
-* TODO How DNS translates a domain name to an IP address.
+* TODO How DNS translates a domain name to an IP address?
+Let's take ~thomsbox.com~ as an example, try the following in your terminal.
+
+
+#+BEGIN_SRC bash
+dig thomsbox.com
+#+END_SRC
+* TODO Different types of DNS records

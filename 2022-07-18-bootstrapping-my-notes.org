@@ -4,7 +4,7 @@
 #+date: 2022-07-18
 #+keywords: org-mode, emacs, vim, notes
 #+html_link_home: ./
-#+html_link_up:
+#+html_link_up: ./
 #+SETUPFILE: org-templates/level-0.org
 
 It all started when I discovered [[https://orgmode.org/][org-mode]] a few years back. Before that I was a
