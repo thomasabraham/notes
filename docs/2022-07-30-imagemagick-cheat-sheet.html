@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>My Notes</title>
+<title>Imagemagick Cheat Sheet</title>
 <meta name="author" content="Thomas" />
-<meta name="description" content="Index of my notes" />
+<meta name="description" content="This is a set of imagemagick commands that comes handy very often" />
+<meta name="keywords" content="Imagemagick, convert" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -203,18 +204,89 @@
 Thom's Notes.🖉
 </div>
 <div id="content" class="content">
-<h1 class="title">My Notes</h1>
-<p>
-This is a collection of my notes
-</p>
-
-<ul class="org-ul">
-<li>2022-07-30 <a href="2022-07-30-imagemagick-cheet-sheet.html">Imagemagick cheatsheet</a></li>
-<li>2022-07-20 <a href="2022-07-20-domain-name-system.html">DNS - Domain Name System</a></li>
-<li>2022-07-18 <a href="2022-07-18-bootstrapping-my-notes.html">Bootstrapping my notes</a></li>
+<h1 class="title">Imagemagick Cheat Sheet
+<br>
+<span class="subtitle">Some imagemagick commands that I often use</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org9a8bbcc">1. Remove metadata from images</a></li>
+<li><a href="#org6584923">2. Resize an image maintaining aspect ratio</a></li>
+<li><a href="#org6fb959d">3. Convert an image to a PDF file</a></li>
+<li><a href="#org731d056">4. Join some PDF files</a></li>
 </ul>
 </div>
+</div>
+
+<div id="outline-container-org9a8bbcc" class="outline-2">
+<h2 id="org9a8bbcc"><span class="section-number-2">1.</span> Remove metadata from images</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-bash">convert &lt;input.jpg&gt; -strip &lt;output.jpg&gt;
+</pre>
+</div>
+<p>
+Removes all the image metadata from <code>input.jpg</code> and stores the result in <code>output.jpg</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org6584923" class="outline-2">
+<h2 id="org6584923"><span class="section-number-2">2.</span> Resize an image maintaining aspect ratio</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-bash">convert &lt;input.jpg&gt; -resize &lt;width&gt;x&lt;height&gt; &lt;output.jpg&gt;
+</pre>
+</div>
+<p>
+Resizes the <code>input.jpg</code> to fit in the specified <code>width</code> and <code>height</code>, and store
+the results in <code>output.jpg</code>. The aspect ratio is maintained. Also, it is
+possible to omit either the width or the height. See
+<a href="https://imagemagick.org/Usage/resize/#resize">https://imagemagick.org/Usage/resize/#resize</a> for more details, but you might
+want to replace <code>magick</code> command with <code>convert</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6fb959d" class="outline-2">
+<h2 id="org6fb959d"><span class="section-number-2">3.</span> Convert an image to a PDF file</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-bash">convert &lt;input1.jpg&gt; <span style="color: #51afef;">[</span>&lt;input2.jpg&gt;<span style="color: #51afef;">]</span> <span style="color: #51afef;">[</span>-page a4<span style="color: #51afef;">]</span> &lt;output.pdf&gt;
+</pre>
+</div>
+<p>
+Create a pdf file named <code>output.pdf</code>, with each page containing one of the input
+images in the given order. The optional <code>-page a4</code> ensures that each page is of
+A4 size and images are scaled, maintaining aspect ratio to fit the pages. The
+<code>-gravity center</code> option can also be used, but if might not work correctly if
+the image won&rsquo;t fit in a single page; in this case, resize the image first.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org731d056" class="outline-2">
+<h2 id="org731d056"><span class="section-number-2">4.</span> Join some PDF files</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-bash">convert &lt;input1.pdf&gt; <span style="color: #51afef;">[</span>&lt;input2.pdf&gt;<span style="color: #51afef;">]</span> &lt;output.pdf&gt;
+</pre>
+</div>
+<p>
+Creates a single PDF file, <code>output.pdf</code>, combining the given input files. This
+can also be done using the <code>pdfunite</code> command as follows.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">pdfunite &lt;input1.pdf&gt; <span style="color: #51afef;">[</span>&lt;input2.pdf&gt;<span style="color: #51afef;">]</span> &lt;output.pdf&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
 <div id="postamble" class="status">
+<p class="date">Date: 2022-07-30</p>
 <p class="author">Author: Thomas</p>
 </div>
 </body>
