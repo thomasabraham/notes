@@ -6,6 +6,6 @@
 
 This is a collection of my notes
 
-+ 2022-07-30 [[file:2022-07-30-imagemagick-cheet-sheet.org][Imagemagick cheatsheet]]
++ 2022-07-30 [[file:2022-07-30-imagemagick-cheat-sheet.org][Imagemagick cheatsheet]]
 + 2022-07-20 [[file:2022-07-20-domain-name-system.org][DNS - Domain Name System]]
 + 2022-07-18 [[file:2022-07-18-bootstrapping-my-notes.org][Bootstrapping my notes]]
