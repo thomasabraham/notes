@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accounting With Gnucash</title>
+<meta name="author" content="Thomas" />
+<meta name="description" content="Notes on accounting and GnuCash" />
+<meta name="keywords" content="Accounting, GnuCash" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+<link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48x48.png" />
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="./"> UP </a>
+ |
+ <a accesskey="H" href="./"> HOME </a>
+</div><div id="preamble" class="status">
+Thom's Notes.🖉
+</div>
+<div id="content" class="content">
+<h1 class="title">Accounting With Gnucash
+<br>
+<span class="subtitle">Things to remember when using GnuCash for Accounting</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org997bd6c">1. Accounting</a>
+<ul>
+<li><a href="#orgd46233f">1.1. Types of accounts</a>
+<ul>
+<li><a href="#org3641732">1.1.1. Balance Sheet Accounts</a></li>
+<li><a href="#orged0c652">1.1.2. Income and Expense Accounts</a></li>
+<li><a href="#org753e0aa">1.1.3. GnuCash Account types</a></li>
+</ul>
+</li>
+<li><a href="#org48068af">1.2. Accounting Equation</a>
+<ul>
+<li><a href="#orgadc7982">1.2.1. Double entry accounting system</a></li>
+</ul>
+</li>
+<li><a href="#orgc36912f">1.3. Debit and Credit</a></li>
+</ul>
+</li>
+<li><a href="#orgbf6b630">2. Accounts and transactions</a>
+<ul>
+<li><a href="#org977d2b4">2.1. Placeholder accounts</a></li>
+<li><a href="#org7d26e5d">2.2. Transactions</a></li>
+<li><a href="#orgb155b36">2.3. Reconciliation</a></li>
+</ul>
+</li>
+<li><a href="#orge159092">3. Data entry using shortcuts</a>
+<ul>
+<li><a href="#org04a19b8">3.1. Entering Date</a>
+<ul>
+<li><a href="#org3403441">3.1.1. Partial dates</a></li>
+</ul>
+</li>
+<li><a href="#org305e46f">3.2. Built-in calculator</a></li>
+<li><a href="#org7bf2f4a">3.3. Moving around register</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org997bd6c" class="outline-2">
+<h2 id="org997bd6c"><span class="section-number-2">1.</span> Accounting</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgd46233f" class="outline-3">
+<h3 id="orgd46233f"><span class="section-number-3">1.1.</span> Types of accounts</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+There are five fundamental types of accounts.
+</p>
+
+<ul class="org-ul">
+<li><b>Assets</b> - are things you have, like cash in an account or stocks of a company.</li>
+<li><b>Liabilities</b> - are things that you owe, like a loan that you have to payback.</li>
+<li><b>Equity</b> - This is the net worth; <code>Total Assets - Total Liabilities</code>.</li>
+<li><b>Income</b> - When you earn money by providing a service, that is income.</li>
+<li><b>Expense</b> - When you spent money for goods or service, that is expense.</li>
+</ul>
+</div>
+
+<div id="outline-container-org3641732" class="outline-4">
+<h4 id="org3641732"><span class="section-number-4">1.1.1.</span> Balance Sheet Accounts</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Assets, Liabilities, and Equity are called balance sheet accounts. These can
+show what you own and owe at a given point in time.
+</p>
+</div>
+</div>
+<div id="outline-container-orged0c652" class="outline-4">
+<h4 id="orged0c652"><span class="section-number-4">1.1.2.</span> Income and Expense Accounts</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+Income and Expense, naturally called Income and expense accounts show the change
+of values over a period of time.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org753e0aa" class="outline-4">
+<h4 id="org753e0aa"><span class="section-number-4">1.1.3.</span> GnuCash Account types</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+GnuCash have twelve types of accounts based on the five fundamental types of
+accounts.
+</p>
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Fundamental type</th>
+<th scope="col" class="org-left">GnuCash type</th>
+<th scope="col" class="org-left">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Assets</td>
+<td class="org-left">Cash</td>
+<td class="org-left">To track money in hand; most liquid</td>
+</tr>
+
+<tr>
+<td class="org-left">Assets</td>
+<td class="org-left">Bank</td>
+<td class="org-left">Money in bank; second most liquid</td>
+</tr>
+
+<tr>
+<td class="org-left">Assets</td>
+<td class="org-left">Stock</td>
+<td class="org-left">Track stocks and bonds</td>
+</tr>
+
+<tr>
+<td class="org-left">Assets</td>
+<td class="org-left">Mutual Fund</td>
+<td class="org-left">Same as stock, but for funds</td>
+</tr>
+
+<tr>
+<td class="org-left">Assets</td>
+<td class="org-left">Accounts Receivable</td>
+<td class="org-left">Business use; receivable bills</td>
+</tr>
+
+<tr>
+<td class="org-left">Assets</td>
+<td class="org-left">Other Assets</td>
+<td class="org-left">Other assets not covered by the above</td>
+</tr>
+
+<tr>
+<td class="org-left">Liability</td>
+<td class="org-left">Credit Card</td>
+<td class="org-left">To track credit card receipts</td>
+</tr>
+
+<tr>
+<td class="org-left">Liability</td>
+<td class="org-left">Accounts Payable</td>
+<td class="org-left">Business only; payable bills</td>
+</tr>
+
+<tr>
+<td class="org-left">Liability</td>
+<td class="org-left">Liability</td>
+<td class="org-left">To track loans, like car loan</td>
+</tr>
+
+<tr>
+<td class="org-left">Equity</td>
+<td class="org-left">Equity</td>
+<td class="org-left">Mostly used for opening balance</td>
+</tr>
+
+<tr>
+<td class="org-left">Income</td>
+<td class="org-left">Income</td>
+<td class="org-left">Payment received for services provided</td>
+</tr>
+
+<tr>
+<td class="org-left">Expense</td>
+<td class="org-left">Expenses</td>
+<td class="org-left">Money spend for goods or services</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org48068af" class="outline-3">
+<h3 id="org48068af"><span class="section-number-3">1.2.</span> Accounting Equation</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+This equation must always be balanced.
+</p>
+<pre class="example">
+Assets - Liabilities = Equity + (Income - Expenses)
+</pre>
+
+<div id="org40388fe" class="figure">
+<p><img src="./img/AccountingEquation.png" alt="AccountingEquation.png" width="100%;">
+</p>
+</div>
+</div>
+<div id="outline-container-orgadc7982" class="outline-4">
+<h4 id="orgadc7982"><span class="section-number-4">1.2.1.</span> Double entry accounting system</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+For the accounting equation to be always balanced, when ever there is a
+transaction that changes the value of one of these accounts, it should also
+change another account such that equation is balanced. This means that every
+transaction will have two entries. For example, assume that you bought a movie
+ticket for 10€ using a credit card. This is obviously an expense, and therefore
+will increase your expense account. But you also have to payback the 10€ to the
+credit card later, so you also have to add 10€ to your liabilities account. Thus
+the equation remains balanced. Now assume that you get 100€ as salary. This is
+your income, and it will also increase your assets; again two accounts are
+modified. And when you payback the 10€ to the credit card, the assets go down,
+so does the liabilities. This system of accounting where every transaction will
+always change two accounts is called the <b>Double entry accounting system</b>.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc36912f" class="outline-3">
+<h3 id="orgc36912f"><span class="section-number-3">1.3.</span> Debit and Credit</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+The account equation can be rearranged to the following.
+</p>
+<pre class="example">
+Assets + Expenses = Equity + Income + Liabilities
+</pre>
+<p>
+In the above form, the left hand side is <code>debit balance accounts</code> and the right
+hand side is <code>credit balance accounts</code>. This means that a <code>debit transaction</code>
+will increase the value of Assets and Expenses, while decreasing the value of
+Equity, Income and Liabilities. Conversely, a <code>credit transaction</code> will decrease
+the value of Assets and expenses, while increasing the value of Equity, Income
+and Liabilities.
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Account</th>
+<th scope="col" class="org-left">On Debit</th>
+<th scope="col" class="org-left">On Credit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Assets</td>
+<td class="org-left">Increase</td>
+<td class="org-left">Decrease</td>
+</tr>
+
+<tr>
+<td class="org-left">Expenses</td>
+<td class="org-left">Increase</td>
+<td class="org-left">Decrease</td>
+</tr>
+
+<tr>
+<td class="org-left">Equity</td>
+<td class="org-left">Decrease</td>
+<td class="org-left">Increase</td>
+</tr>
+
+<tr>
+<td class="org-left">Income</td>
+<td class="org-left">Decrease</td>
+<td class="org-left">Increase</td>
+</tr>
+
+<tr>
+<td class="org-left">Liabilities</td>
+<td class="org-left">Decrease</td>
+<td class="org-left">Increase</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbf6b630" class="outline-2">
+<h2 id="orgbf6b630"><span class="section-number-2">2.</span> Accounts and transactions</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+In GnuCash, all data is stored in a <b>File</b>, which contains multiple <b>Accounts</b>,
+which in turn contains muliple <b>transactions</b>. File can be an actual xml file on
+the disk or it could be an SQL database. Either way, we work on one file at a
+time. Inside a file, we&rsquo;ll have multiple accounts. Each account will have a
+name, and a type that is one of the twelve account types supported by GnuCash.
+</p>
+
+<p>
+And transactions are organised into accounts. Each transaction is added to two
+accounts to balance the accounting equation.
+</p>
+</div>
+<div id="outline-container-org977d2b4" class="outline-3">
+<h3 id="org977d2b4"><span class="section-number-3">2.1.</span> Placeholder accounts</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+These are special kind of accounts that is used to organise other accounts. A
+placeholder account won&rsquo;t contain any transaction directly in it. Instead it
+will have other <code>sub-accounts</code> with transactions.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7d26e5d" class="outline-3">
+<h3 id="org7d26e5d"><span class="section-number-3">2.2.</span> Transactions</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+A transaction in a double entry accounting is between at least two accounts. A
+single transaction usually contains two parts, a <b>from</b> and a <b>to</b>. In GnuCash,
+each such part is called a <b>Split</b>, instead of the more formal term <b>Ledger
+Entry</b>. GnuCash supports multiple splits in a single transaction, but there
+should be atleast two by default. Each split moves money into or out of an
+account.
+</p>
+
+<p>
+A transaction with only two split is called a <b>Simple Transaction</b>, and a
+transaction with three or more split is called a <b>Split Transaction</b>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb155b36" class="outline-3">
+<h3 id="orgb155b36"><span class="section-number-3">2.3.</span> Reconciliation</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Reconciliation is the process of verifying the correctness of a transaction. The
+<b>R</b> Field in the account register indicate the reconciliation status for each
+transaction.
+</p>
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>R</b></th>
+<th scope="col" class="org-left">meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>n</code></td>
+<td class="org-left">new - not reconciled</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>c</code></td>
+<td class="org-left">cleared - not reconciled</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>y</code></td>
+<td class="org-left">reconciled</td>
+</tr>
+</tbody>
+</table>
+<p>
+Imagine that you write a check for 100€, initially the transaction is in new
+(<code>n</code>) state. Later you got confirmation that the check is cached, then the
+transaction should be marked as cleared (<code>c</code>). And later when you can verify the
+transaction with a bank statement, it can be marked as reconciled (<code>y</code>).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge159092" class="outline-2">
+<h2 id="orge159092"><span class="section-number-2">3.</span> Data entry using shortcuts</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Transactions are added to accounts in the <b>Register</b> window.
+</p>
+</div>
+<div id="outline-container-org04a19b8" class="outline-3">
+<h3 id="org04a19b8"><span class="section-number-3">3.1.</span> Entering Date</h3>
+<div class="outline-text-3" id="text-3-1">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Shortcut</th>
+<th scope="col" class="org-left">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>+</code> or <code>=</code></td>
+<td class="org-left">Increment date</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-</code> or <code>_</code></td>
+<td class="org-left">Decrement date</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>]</code> or <code>}</code></td>
+<td class="org-left">Increment month</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>[</code> or <code>{</code></td>
+<td class="org-left">Decrement month</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m</code> or <code>M</code></td>
+<td class="org-left">First date of month</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>h</code> or <code>H</code></td>
+<td class="org-left">Last date of month</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>y</code> or <code>Y</code></td>
+<td class="org-left">First date of year</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code> or <code>R</code></td>
+<td class="org-left">Last date of year</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>t</code> or <code>T</code></td>
+<td class="org-left">Today&rsquo;s date</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-org3403441" class="outline-4">
+<h4 id="org3403441"><span class="section-number-4">3.1.1.</span> Partial dates</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>A single number is interpreted as day in current month and year.</li>
+<li>When a day and month is specified, year is added automatically.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org305e46f" class="outline-3">
+<h3 id="org305e46f"><span class="section-number-3">3.2.</span> Built-in calculator</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+All amount fields support simple arithmetic operations like <code>+, -, \*, /</code> to be
+performed.
+</p>
+</div>
+</div>
+<div id="outline-container-org7bf2f4a" class="outline-3">
+<h3 id="org7bf2f4a"><span class="section-number-3">3.3.</span> Moving around register</h3>
+<div class="outline-text-3" id="text-3-3">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Shortcut</th>
+<th scope="col" class="org-left">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>Tab</code></td>
+<td class="org-left">Move to next Field</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Shift+Tab</code></td>
+<td class="org-left">Move to previous Field</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Home</code></td>
+<td class="org-left">Move to beginning of the Field</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>End</code></td>
+<td class="org-left">Move to the end of the Field</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Enter</code> or <code>Down</code></td>
+<td class="org-left">Move to the next transaction</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Up</code></td>
+<td class="org-left">Move to the previous transaction</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Page Up</code></td>
+<td class="org-left">Move up one screen</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Page Down</code></td>
+<td class="org-left">Move down once screen</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Shift + Page Up</code></td>
+<td class="org-left">Move to very first transaction</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Shift + Page Down</code></td>
+<td class="org-left">Move to very last transaction</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-09-03</p>
+<p class="author">Author: Thomas</p>
+</div>
+</body>
+</html>

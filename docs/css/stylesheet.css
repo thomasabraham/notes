@@ -31,3 +31,7 @@ body{
     max-width: 60em;
     margin: auto;
 }
+td,th {
+    border: solid 1px black;
+    padding-inline: 5px;
+}
