@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    background-color:grey;
+    background-color:cornsilk;
 }
 #org-div-home-and-up > a{
     color: white;
@@ -9,23 +9,23 @@ body{
     font-size: 100%;
     max-width: 60em;
     margin: auto;
-    padding-top: 1em;
     padding-inline: 2em;
+    height: 256px;
     color: white;
-    background-color: black;
+    background-image: url("../img/header.jpg");
 }
 .content{
     padding: 2em;
     background-color:silver;
 }
 #preamble {
-    max-width: 30em;
-    background-color: black;
+    max-width: 15em;
+    background-color: #3a4728;
+    text-align: center;
     color: white;
     margin-inline: auto;
-    padding-inline: 1em;
-    padding-bottom: 1em;
-    font-size: 2em;
+    padding-inline: 0.5em;
+    font-size: 4em;
 }
 #postamble{
     max-width: 60em;
@@ -34,4 +34,7 @@ body{
 td,th {
     border: solid 1px black;
     padding-inline: 5px;
+}
+.timestamp {
+    color: #882020;
 }

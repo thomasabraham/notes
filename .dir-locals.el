@@ -1,1 +1,1 @@
-((org-mode . ((org-html-preamble . "Thom's Notes.🖉"))))
+((org-mode . ((org-html-preamble . "Thom's Notes."))))

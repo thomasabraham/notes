@@ -1,13 +1,24 @@
-#+title: My Notes
-#+description: Index of my notes
+#+title: Index of Thom's Notes
+#+description: Here is a collection of notes on various topics.
 #+html_link_up: ./
 #+html_link_home: ./
 #+SETUPFILE: org-templates/level-0.org
+#+OPTIONS: toc:nil num:0
 
-This is a collection of my notes
+This is a collection of my notes on various topics. While I try to make them
+useful for the public, the true target audiance is future self.
 
-+ 2022-09-03 [[file:2022-08-03-accounting-with-gnucash.org][Accounting with GnuCash]]
-+ 2022-08-27 [[file:2022-08-27-docker-cheat-sheet.org][Docker cheatsheet]]
-+ 2022-07-30 [[file:2022-07-30-imagemagick-cheat-sheet.org][Imagemagick cheatsheet]]
-+ 2022-07-20 [[file:2022-07-20-domain-name-system.org][DNS - Domain Name System]]
-+ 2022-07-18 [[file:2022-07-18-bootstrapping-my-notes.org][Bootstrapping my notes]]
+* [[file:2022-08-03-accounting-with-gnucash.org][Accounting with GnuCash]]
+<2022-09-03 Sat> Notes on accounting and GnuCash.
+-----
+* [[file:2022-08-27-docker-cheat-sheet.org][Docker cheatsheet]]
+<2022-08-27 Sat> Docker commands that comes handy very often.
+-----
+* [[file:2022-07-30-imagemagick-cheat-sheet.org][Imagemagick cheatsheet]]
+<2022-07-30 Sat> Some imagemagick commands that comes handy very often.
+-----
+* [[file:2022-07-20-domain-name-system.org][DNS - Domain Name System]]
+<2022-07-20 Wed> This is a post about why we need DNS, and how it works.
+-----
+* [[file:2022-07-18-bootstrapping-my-notes.org][Bootstrapping my notes]]
+<2022-07-18 Mon>  Story of how I ended up with my notes in org-mode.
