@@ -3,6 +3,23 @@
 # Notes
 This is a collection of my notes on various topics.
 
+## Hosting locally to see changes
+Clone the repository using git first to get it locally.
+
+``` shell
+git clone https://github.com/thomasabraham/notes.git
+```
+
+Then if you are doing this for the first time, follow the [instruction from
+github](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
+to install necessary tools like jekyll.
+
+Then to run it locally, use the following.
+
+``` shell
+bundle exec jekyll serve
+```
+
 # License
 
 This work is licensed under a
