@@ -2,7 +2,7 @@
 layout: post
 title: Calendar week
 date: 2022-09-03
-categories: Cronology 
+categories: Chronology
 ---
 
 ## What is a week?
@@ -15,7 +15,7 @@ and Sunday is the last.[^3]
 ## What is a year?
 A year, or more precisely a solar year[^4] is the time it takes for Earth to
 complete one revolution around the Sun. It is also known as a Tropical year, and
-is close to 365.25 days. 
+is close to 365.25 days.
 
 Makers of all the calendars that we use today wanted the number of days in a
 year to be a whole number. For instance, the Julian Calendar[^5] did this by
@@ -28,19 +28,19 @@ Gregorian calendar fixed the drift of seasons in Julian calendar. It does this
 by omitting the leap year every one hundred years, like 1100, 1300, 1900, but
 not if the year is divisible by 400. This means 1996, 2000, and 2400 are leap
 years, but 1997, 2100, 2200, and 2300 are not leap years. This makes one average
-year 365.2425 days in Gergorian Clendar, which is much closer to the actual
+year 365.2425 days in Gregorian Calendar, which is much closer to the actual
 solar year.
 
 ## How many weeks are a year?
 Having a whole number of weeks per year is a nice thing to have. And a year is
 either 365 days or 366 days, neither of which is divisible by seven. Both have
 52 whole weeks and either one or two extra days. This means it is impossible to
-have a whole number of weeks per year, unless we do some clevar trickery; which
+have a whole number of weeks per year, unless we do some clever trickery; which
 is exactly what the Calendar week does.
 
 ## Calendar week
 According to the ISO Week date, there is either 52 or 53 full weeks in a year.
-The ﬁrst week of a year is the week with the ﬁrst Thursday of that year. 
+The ﬁrst week of a year is the week with the ﬁrst Thursday of that year.
 
 If the year begins on Monday, Tuesday, Wednesday, or Thursday, then this is the
 first week of that year. This means the first week of a new year can already
